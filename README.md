@@ -1,6 +1,6 @@
 # Quiz
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.6.
+A quiz app made out of Angular Material. Select a category, difficulty and the number of questions to retireve a page full of questions. Answer them and see your final score.
 
 ## Development server
 
