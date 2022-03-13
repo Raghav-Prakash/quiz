@@ -1,71 +1,79 @@
 <mat-card class="form-card">
 
-  <mat-card-title>
+  <mat-card-title class="card-title">
     Let's get you set up.
   </mat-card-title>
 
   <mat-card-content class="form-group">
 
-    <div class="number-of-questions form-control">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
-      <mat-form-field class="number-of-questions">
+      <div class="number-of-questions form-control">
   
-        <mat-label for="amount">Enter the number of questions (10 to 50)</mat-label>
-        <input matInput name="amount">
+        <mat-form-field class="number-of-questions">
+    
+          <mat-label for="amount">Enter the number of questions (10 to 50)</mat-label>
+          <input matInput name="amount" formControlName="amount">
+    
+        </mat-form-field>
   
-      </mat-form-field>
+      </div>
+  
+      <div class="select-category form-control">
+  
+        <mat-form-field appearance="fill">
+  
+          <mat-label for="category">Select a category</mat-label>
+          <mat-select name="category" formControlName="category">
+            <mat-option value="">Any</mat-option>
+            <mat-option value="one">First option</mat-option>
+            <mat-option value="two">Second option</mat-option>
+          </mat-select>
+  
+        </mat-form-field>
+  
+      </div>
+  
+      <div class="select-difficulty form-control">
+  
+        <mat-form-field appearance="fill">
+  
+          <mat-label for="difficulty">Select the difficulty level</mat-label>
+          <mat-select name="difficulty" formControlName="difficulty">
+            <mat-option value="">Any</mat-option>
+            <mat-option value="easy">Easy</mat-option>
+            <mat-option value="medium">Medium</mat-option>
+            <mat-option value="hard">Hard</mat-option>
+          </mat-select>
+  
+        </mat-form-field>
+  
+      </div>
+  
+      <div class="select-type form-control">
+  
+        <mat-form-field appearance="fill">
+  
+          <mat-label for="type">Select the options type</mat-label>
+          <mat-select name="type" formControlName="type">
+            <mat-option value="">Any</mat-option>
+            <mat-option value="multiple">Multiple Choice</mat-option>
+            <mat-option value="boolean">True / False</mat-option>
+          </mat-select>
+  
+        </mat-form-field>
+  
+      </div>
 
-    </div>
+      <div class="submit-btn">
+        <button mat-flat-button color="primary"
+          type="submit">
+          START QUIZ
+        </button>
+      </div>
 
-    <div class="select-category form-control">
-
-      <mat-form-field appearance="fill">
-
-        <mat-label for="category">Select a category</mat-label>
-        <mat-select name="category">
-          <mat-option value="one">First option</mat-option>
-          <mat-option value="two">Second option</mat-option>
-        </mat-select>
-
-      </mat-form-field>
-
-    </div>
-
-    <div class="select-difficulty form-control">
-
-      <mat-form-field appearance="fill">
-
-        <mat-label for="difficulty">Select the difficulty level</mat-label>
-        <mat-select name="difficulty">
-          <mat-option value="easy">Easy</mat-option>
-          <mat-option value="medium">Medium</mat-option>
-          <mat-option value="hard">Hard</mat-option>
-        </mat-select>
-
-      </mat-form-field>
-
-    </div>
-
-    <div class="select-type form-control">
-
-      <mat-form-field appearance="fill">
-
-        <mat-label for="type">Select the options type</mat-label>
-        <mat-select name="type">
-          <mat-option value="multiple">Multiple Choice</mat-option>
-          <mat-option value="boolean">True / False</mat-option>
-        </mat-select>
-
-      </mat-form-field>
-
-    </div>
+    </form>
 
   </mat-card-content>
-
-  <mat-card-actions align="end">
-
-    <button mat-flat-button color="primary">START QUIZ</button>
-
-  </mat-card-actions>
 
 </mat-card>

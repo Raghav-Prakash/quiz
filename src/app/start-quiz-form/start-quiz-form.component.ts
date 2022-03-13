@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'start-quiz-form',
@@ -7,9 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StartQuizFormComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup;
 
-  ngOnInit(): void {
+  constructor(
+    private formBuilder: FormBuilder
+  ) {
+    this.form = this.formBuilder.group({
+      amount: [10, [
+        Validators.required,
+        Validators.pattern(/[0-9]+/),
+        Validators.min(10),
+        Validators.max(50)
+      ]],
+      category: [''],
+      difficulty: [''],
+      type: ['']
+    });
+  }
+
+  ngOnInit() {
+  }
+
+  onSubmit() {
+    console.log(this.form.value)
   }
 
 }
