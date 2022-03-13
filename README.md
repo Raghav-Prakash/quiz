@@ -1,6 +1,6 @@
 # Quiz
 
-A quiz app made out of Angular Material. Select a category, difficulty and the number of questions to retireve a page full of questions. Answer them and see your final score.
+A quiz app made out of Angular Material. Select a category, difficulty and the number of questions to retrieve a page full of questions. Answer them and see your final score.
 
 ## Development server
 
