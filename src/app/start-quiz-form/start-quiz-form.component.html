@@ -1,7 +1,7 @@
-<mat-card>
+<mat-card class="form-card">
 
   <mat-card-title>
-    Please enter the following information to generate your quiz.
+    Let's get you set up.
   </mat-card-title>
 
   <mat-card-content class="form-group">
@@ -10,7 +10,7 @@
 
       <mat-form-field class="number-of-questions">
   
-        <mat-label for="amount">Number of questions</mat-label>
+        <mat-label for="amount">Enter the number of questions (10 to 50)</mat-label>
         <input matInput name="amount">
   
       </mat-form-field>
@@ -21,7 +21,7 @@
 
       <mat-form-field appearance="fill">
 
-        <mat-label for="category">Category</mat-label>
+        <mat-label for="category">Select a category</mat-label>
         <mat-select name="category">
           <mat-option value="one">First option</mat-option>
           <mat-option value="two">Second option</mat-option>
@@ -35,7 +35,7 @@
 
       <mat-form-field appearance="fill">
 
-        <mat-label for="difficulty">Difficulty</mat-label>
+        <mat-label for="difficulty">Select the difficulty level</mat-label>
         <mat-select name="difficulty">
           <mat-option value="easy">Easy</mat-option>
           <mat-option value="medium">Medium</mat-option>
@@ -50,7 +50,7 @@
 
       <mat-form-field appearance="fill">
 
-        <mat-label for="type">Options type</mat-label>
+        <mat-label for="type">Select the options type</mat-label>
         <mat-select name="type">
           <mat-option value="multiple">Multiple Choice</mat-option>
           <mat-option value="boolean">True / False</mat-option>
