@@ -13,10 +13,23 @@
         <mat-form-field class="number-of-questions">
     
           <mat-label for="amount">Enter the number of questions (10 to 50)</mat-label>
-          <input matInput name="amount" formControlName="amount">
-    
+          <input required matInput name="amount" formControlName="amount">
+          
+          <mat-error *ngIf="amount.errors?.required">
+            An amount needs to be provided.
+          </mat-error>
+          <mat-error *ngIf="amount.errors?.pattern">
+            Only numbers can be provided.
+          </mat-error>
+          <mat-error *ngIf="amount.errors?.min">
+            The minimum number of questions is 10.
+          </mat-error>
+          <mat-error *ngIf="amount.errors?.max">
+            The maximum number of questions is 50.
+          </mat-error>
+
         </mat-form-field>
-  
+
       </div>
   
       <div class="select-category form-control">
@@ -67,7 +80,8 @@
 
       <div class="submit-btn">
         <button mat-flat-button color="primary"
-          type="submit">
+          type="submit"
+          [disabled]="!form.valid">
           START QUIZ
         </button>
       </div>

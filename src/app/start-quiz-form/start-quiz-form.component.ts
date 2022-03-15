@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'start-quiz-form',
@@ -9,6 +9,13 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class StartQuizFormComponent implements OnInit {
 
   form: FormGroup;
+
+  /**
+   * Access the 'amount' input form control.
+   */
+  get amount(): AbstractControl {
+    return this.form.controls['amount'];
+  }
 
   constructor(
     private formBuilder: FormBuilder
