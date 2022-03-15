@@ -5,8 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { Category } from 'src/app/models/category';
 import { ApiCategories } from 'src/app/services/models/categories';
-import { CATEGORIES_URL} from 'src/app/urls/categories';
-
+import { CATEGORIES_URL } from 'src/app/urls';
 @Injectable({
   providedIn: 'root'
 })

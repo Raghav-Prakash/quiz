@@ -39,8 +39,10 @@
           <mat-label for="category">Select a category</mat-label>
           <mat-select name="category" formControlName="category">
             <mat-option value="">Any</mat-option>
-            <mat-option value="one">First option</mat-option>
-            <mat-option value="two">Second option</mat-option>
+            <mat-option *ngFor="let category of categories$ | async"
+              [value]="category.id">
+              {{ category.name }}
+            </mat-option>
           </mat-select>
   
         </mat-form-field>
@@ -82,7 +84,7 @@
         <button mat-flat-button color="primary"
           type="submit"
           [disabled]="!form.valid">
-          START QUIZ
+          START
         </button>
       </div>
 
