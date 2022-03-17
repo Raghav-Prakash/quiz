@@ -3,10 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Question } from '../models/question';
-import { ApiQuestions, ApiQuestionResult } from '../services/models/questions';
-import { QUESTIONS_URL } from '../urls';
-import { FormValue } from '../models/form-value';
+import { Question } from 'src/app/models/question';
+import { ApiQuestions, ApiQuestionResult } from 'src/app/services/models/questions';
+import { QUESTIONS_URL } from 'src/app/urls';
+import { FormValue } from 'src/app/models/form-value';
 
 /**
  * Mapper function that maps the API model of the questions to its equivalent

@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Category } from 'src/app/models/category';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { FormValue } from 'src/app/models/form-value';
+import { QuestionsStore } from 'src/app/store/questions.store';
 @Component({
   selector: 'start-quiz-form',
   templateUrl: './start-quiz-form.component.html',
@@ -24,7 +25,8 @@ export class StartQuizFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private categoriesService: CategoriesService
+    private categoriesService: CategoriesService,
+    private questionsStore: QuestionsStore,
   ) {
     this.form = this.formBuilder.group({
       amount: [10, [
@@ -44,7 +46,8 @@ export class StartQuizFormComponent implements OnInit {
   }
 
   onSubmit() {
-    const formData = computePostData(this.form.value);
+    const formValue = computePostData(this.form.value);
+    this.questionsStore.setQuestions(formValue);
   }
 
 }
