@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from 'src/app/app.component';
+import { QuestionsComponent } from 'src/app/questions/questions.component';
+import { StartQuizFormComponent } from 'src/app/start-quiz-form/start-quiz-form.component';
 
 const routes: Routes = [
-  { path: '', component: AppComponent }
+  { path: '', component: StartQuizFormComponent },
+  { path: 'questions', component: QuestionsComponent }
 ];
 
 @NgModule({

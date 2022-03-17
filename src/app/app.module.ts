@@ -14,11 +14,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StartQuizFormComponent } from './start-quiz-form/start-quiz-form.component';
+import { QuestionsComponent } from './questions/questions.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StartQuizFormComponent
+    StartQuizFormComponent,
+    QuestionsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 import { Category } from 'src/app/models/category';
 import { CategoriesService } from 'src/app/services/categories.service';
@@ -11,10 +13,11 @@ import { QuestionsStore } from 'src/app/store/questions.store';
   templateUrl: './start-quiz-form.component.html',
   styleUrls: ['./start-quiz-form.component.less']
 })
-export class StartQuizFormComponent implements OnInit {
+export class StartQuizFormComponent implements OnInit, OnDestroy {
 
   form: FormGroup;
   categories$: Observable<Category[]>;
+  private subscriptions: Subscription = new Subscription();
 
   /**
    * Access the 'amount' input form control.
@@ -27,6 +30,7 @@ export class StartQuizFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private categoriesService: CategoriesService,
     private questionsStore: QuestionsStore,
+    private router: Router,
   ) {
     this.form = this.formBuilder.group({
       amount: [10, [
@@ -43,6 +47,18 @@ export class StartQuizFormComponent implements OnInit {
 
   ngOnInit() {
     this.categories$ = this.categoriesService.getCategories();
+
+    // Upon seeing questions available in the observable, route to
+    // /questions to display them.
+    this.subscriptions.add(
+      this.questionsStore.questions$
+        .pipe(filter(questions => questions.length > 0))
+        .subscribe(__ => this.router.navigate(['questions']))
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
   }
 
   onSubmit() {

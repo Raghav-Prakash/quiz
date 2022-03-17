@@ -1,95 +1,104 @@
-<mat-card class="form-card">
+<div class="title">
+  <h1>Let's test your trivia knowledge!</h1>
+  <ng-container *ngTemplateOutlet="formCard"></ng-container>
+</div>
 
-  <mat-card-title class="card-title">
-    Let's get you set up.
-  </mat-card-title>
+<ng-template #formCard>
 
-  <mat-card-content class="form-group">
-
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-
-      <div class="number-of-questions form-control">
+  <mat-card class="form-card">
   
-        <mat-form-field class="number-of-questions">
+    <mat-card-title class="card-title">
+      Let's get you set up.
+    </mat-card-title>
+  
+    <mat-card-content class="form-group">
+  
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  
+        <div class="number-of-questions form-control">
     
-          <mat-label for="amount">Enter the number of questions (10 to 50)</mat-label>
-          <input required matInput name="amount" formControlName="amount">
-          
-          <mat-error *ngIf="amount.errors?.required">
-            An amount needs to be provided.
-          </mat-error>
-          <mat-error *ngIf="amount.errors?.pattern">
-            Only numbers can be provided.
-          </mat-error>
-          <mat-error *ngIf="amount.errors?.min">
-            The minimum number of questions is 10.
-          </mat-error>
-          <mat-error *ngIf="amount.errors?.max">
-            The maximum number of questions is 50.
-          </mat-error>
+          <mat-form-field class="number-of-questions">
+      
+            <mat-label for="amount">Enter the number of questions (10 to 50)</mat-label>
+            <input required matInput name="amount" formControlName="amount">
+            
+            <mat-error *ngIf="amount.errors?.required">
+              An amount needs to be provided.
+            </mat-error>
+            <mat-error *ngIf="amount.errors?.pattern">
+              Only numbers can be provided.
+            </mat-error>
+            <mat-error *ngIf="amount.errors?.min">
+              The minimum number of questions is 10.
+            </mat-error>
+            <mat-error *ngIf="amount.errors?.max">
+              The maximum number of questions is 50.
+            </mat-error>
+  
+          </mat-form-field>
+  
+        </div>
+    
+        <div class="select-category form-control">
+    
+          <mat-form-field appearance="fill">
+    
+            <mat-label for="category">Select a category</mat-label>
+            <mat-select name="category" formControlName="category">
+              <mat-option value="">Any</mat-option>
+              <mat-option *ngFor="let category of categories$ | async"
+                [value]="category.id">
+                {{ category.name }}
+              </mat-option>
+            </mat-select>
+    
+          </mat-form-field>
+    
+        </div>
+    
+        <div class="select-difficulty form-control">
+    
+          <mat-form-field appearance="fill">
+    
+            <mat-label for="difficulty">Select the difficulty level</mat-label>
+            <mat-select name="difficulty" formControlName="difficulty">
+              <mat-option value="">Any</mat-option>
+              <mat-option value="easy">Easy</mat-option>
+              <mat-option value="medium">Medium</mat-option>
+              <mat-option value="hard">Hard</mat-option>
+            </mat-select>
+    
+          </mat-form-field>
+    
+        </div>
+    
+        <div class="select-type form-control">
+    
+          <mat-form-field appearance="fill">
+    
+            <mat-label for="type">Select the options type</mat-label>
+            <mat-select name="type" formControlName="type">
+              <mat-option value="">Any</mat-option>
+              <mat-option value="multiple">Multiple Choice</mat-option>
+              <mat-option value="boolean">True / False</mat-option>
+            </mat-select>
+    
+          </mat-form-field>
+    
+        </div>
+  
+        <div class="submit-btn">
+          <button mat-flat-button color="primary"
+            type="submit"
+            [disabled]="!form.valid">
+            START
+          </button>
+        </div>
+  
+      </form>
+  
+    </mat-card-content>
+  
+  </mat-card>
 
-        </mat-form-field>
-
-      </div>
-  
-      <div class="select-category form-control">
-  
-        <mat-form-field appearance="fill">
-  
-          <mat-label for="category">Select a category</mat-label>
-          <mat-select name="category" formControlName="category">
-            <mat-option value="">Any</mat-option>
-            <mat-option *ngFor="let category of categories$ | async"
-              [value]="category.id">
-              {{ category.name }}
-            </mat-option>
-          </mat-select>
-  
-        </mat-form-field>
-  
-      </div>
-  
-      <div class="select-difficulty form-control">
-  
-        <mat-form-field appearance="fill">
-  
-          <mat-label for="difficulty">Select the difficulty level</mat-label>
-          <mat-select name="difficulty" formControlName="difficulty">
-            <mat-option value="">Any</mat-option>
-            <mat-option value="easy">Easy</mat-option>
-            <mat-option value="medium">Medium</mat-option>
-            <mat-option value="hard">Hard</mat-option>
-          </mat-select>
-  
-        </mat-form-field>
-  
-      </div>
-  
-      <div class="select-type form-control">
-  
-        <mat-form-field appearance="fill">
-  
-          <mat-label for="type">Select the options type</mat-label>
-          <mat-select name="type" formControlName="type">
-            <mat-option value="">Any</mat-option>
-            <mat-option value="multiple">Multiple Choice</mat-option>
-            <mat-option value="boolean">True / False</mat-option>
-          </mat-select>
-  
-        </mat-form-field>
-  
-      </div>
-
-      <div class="submit-btn">
-        <button mat-flat-button color="primary"
-          type="submit"
-          [disabled]="!form.valid">
-          START
-        </button>
-      </div>
-
-    </form>
-
-  </mat-card-content>
-
-</mat-card>
+</ng-template>
