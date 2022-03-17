@@ -5,12 +5,13 @@ import { StartQuizFormComponent } from 'src/app/start-quiz-form/start-quiz-form.
 import { QuestionsGuardService as QuestionsGuard } from 'src/app/guards/questions-guard.service';
 
 const routes: Routes = [
-  { path: '', component: StartQuizFormComponent },
+  { path: 'home', component: StartQuizFormComponent },
   {
     path: 'questions',
     component: QuestionsComponent,
     canActivate: [QuestionsGuard]
-  }
+  },
+  { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 
 @NgModule({
