@@ -5,9 +5,12 @@
   <div class="options">
     <div class="options-top-row">
   
-      <ng-container *ngFor="let option of options.slice(0, 2)">
-        <div class="option">
-          <button mat-raised-button>{{option}}</button>
+      <ng-container *ngFor="let option of options; let i = index">
+        <div class="option" *ngIf="i < 2">
+          <ng-container *ngTemplateOutlet="optionButton; context: {
+            i: i,
+            option: option
+          }"></ng-container>
         </div>
       </ng-container>
   
@@ -15,15 +18,28 @@
 
     <div class="options-bottom-row" *ngIf="options.length > 2">
   
-      <ng-container *ngFor="let option of options.slice(2)">
-        <div class="option">
-          <button mat-raised-button>{{option}}</button>
+      <ng-container *ngFor="let option of options; let i = index">
+        <div class="option" *ngIf="i >= 2">
+          <ng-container *ngTemplateOutlet="optionButton; context: {
+            i: i,
+            option: option
+          }"></ng-container>
         </div>
       </ng-container>
   
     </div>
   </div>
 
-
-
 </mat-card>
+
+<ng-template #optionButton
+  let-i="i"
+  let-option="option">
+
+  <button mat-raised-button (click)="onSelectOption(option)"
+    [class.correct-answer]="i === selectedAnswerIndex && isAnswerCorrect"
+    [class.incorrect-answer]="i === selectedAnswerIndex && !isAnswerCorrect">
+    {{option}}
+  </button>
+
+</ng-template>
