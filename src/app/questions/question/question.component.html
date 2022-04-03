@@ -1,0 +1,29 @@
+<mat-card class="question-card">
+
+  <mat-card-title class="question">{{question.question}}</mat-card-title>
+
+  <div class="options">
+    <div class="options-top-row">
+  
+      <ng-container *ngFor="let option of options.slice(0, 2)">
+        <div class="option">
+          <button mat-raised-button>{{option}}</button>
+        </div>
+      </ng-container>
+  
+    </div>
+
+    <div class="options-bottom-row" *ngIf="options.length > 2">
+  
+      <ng-container *ngFor="let option of options.slice(2)">
+        <div class="option">
+          <button mat-raised-button>{{option}}</button>
+        </div>
+      </ng-container>
+  
+    </div>
+  </div>
+
+
+
+</mat-card>

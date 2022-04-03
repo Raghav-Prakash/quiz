@@ -1,0 +1,35 @@
+@import "src/styles.less";
+
+.question-card {
+  margin-bottom: 1em;
+  background-color: @cardBackgroundColor;
+
+  .question {
+    padding-left: .5rem;
+  }
+
+  .options-top-row, .options-bottom-row {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin: 1rem auto;
+    padding: 1rem;
+
+    .option {
+      min-width: 20rem;
+
+      button {
+        width: 100%;
+        background-color: @bodyBackgroundColor;
+        font-size: 1.2rem;
+        color: @cardBackgroundColor;
+
+        &:hover {
+          background-color: darken(@bodyBackgroundColor, 20%);
+          color: white;
+        }
+      }
+    }
+
+  }
+}

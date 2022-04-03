@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 
+import { QuestionsStore } from 'src/app/store/questions.store';
+
 @Component({
-  selector: 'app-questions',
+  selector: 'questions',
   templateUrl: './questions.component.html',
   styleUrls: ['./questions.component.less']
 })
 export class QuestionsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public questionsStore: QuestionsStore
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
 }

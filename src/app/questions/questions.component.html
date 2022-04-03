@@ -1,1 +1,7 @@
-<p>questions works!</p>
+<ng-container *ngIf="(questionsStore.questions$ | async) as questions">
+
+  <ng-container *ngFor="let question of questions">
+    <question [question]="question"></question>
+  </ng-container>
+
+</ng-container>
