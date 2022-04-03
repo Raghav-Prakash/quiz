@@ -8,6 +8,7 @@ import { Category } from 'src/app/models/category';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { FormValue } from 'src/app/models/form-value';
 import { QuestionsStore } from 'src/app/store/questions.store';
+import { LoaderService } from 'src/app/services/loader.service';
 @Component({
   selector: 'start-quiz-form',
   templateUrl: './start-quiz-form.component.html',
@@ -31,6 +32,7 @@ export class StartQuizFormComponent implements OnInit, OnDestroy {
     private categoriesService: CategoriesService,
     private questionsStore: QuestionsStore,
     private router: Router,
+    public loaderService: LoaderService,
   ) {
     this.form = this.formBuilder.group({
       amount: [10, [
