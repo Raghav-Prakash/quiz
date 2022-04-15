@@ -19,6 +19,7 @@ import { StartQuizFormComponent } from 'src/app/start-quiz-form/start-quiz-form.
 import { QuestionsComponent } from 'src/app/questions/questions.component';
 import { QuestionComponent } from 'src/app/questions/question/question.component';
 import { LoaderComponent } from 'src/app/loader/loader.component';
+import { FinishPageComponent } from './finish-page/finish-page.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { LoaderComponent } from 'src/app/loader/loader.component';
     StartQuizFormComponent,
     QuestionsComponent,
     QuestionComponent,
-    LoaderComponent
+    LoaderComponent,
+    FinishPageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { QuestionsStore } from 'src/app/store/questions.store';
 import { AttemptCountStore } from 'src/app/store/attempt-count.store';
@@ -8,14 +8,11 @@ import { AttemptCountStore } from 'src/app/store/attempt-count.store';
   templateUrl: './questions.component.html',
   styleUrls: ['./questions.component.less']
 })
-export class QuestionsComponent implements OnInit {
+export class QuestionsComponent {
 
   constructor(
     public questionsStore: QuestionsStore,
     public attemptCountStore: AttemptCountStore
   ) { }
-
-  ngOnInit() {
-  }
 
 }

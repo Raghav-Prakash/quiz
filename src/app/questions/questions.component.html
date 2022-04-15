@@ -5,7 +5,7 @@
   </ng-container>
 
   <div class="finish-quiz" *ngIf="(attemptCountStore.attemptCount$ | async) === questions.length">
-    <button mat-raised-button class="finish">FINISH</button>
+    <button mat-raised-button class="finish" [routerLink]="['/', 'finish']">FINISH</button>
   </div>
 
 </ng-container>
