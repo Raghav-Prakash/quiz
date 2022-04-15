@@ -4,6 +4,7 @@ import { QuestionsComponent } from 'src/app/questions/questions.component';
 import { StartQuizFormComponent } from 'src/app/start-quiz-form/start-quiz-form.component';
 import { FinishPageComponent } from 'src/app/finish-page/finish-page.component';
 import { QuestionsGuardService as QuestionsGuard } from 'src/app/guards/questions-guard.service';
+import { FinishPageGuardService as FinishGuard } from 'src/app/guards/finish-page-guard.service';
 
 const routes: Routes = [
   { path: 'home', component: StartQuizFormComponent },
@@ -12,7 +13,11 @@ const routes: Routes = [
     component: QuestionsComponent,
     canActivate: [QuestionsGuard]
   },
-  { path: 'finish', component: FinishPageComponent },
+  {
+    path: 'finish',
+    component: FinishPageComponent,
+    canActivate: [FinishGuard]
+  },
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 
