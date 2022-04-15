@@ -38,7 +38,11 @@
 
   <button mat-raised-button (click)="onSelectOption(option)"
     [class.correct-answer]="i === selectedAnswerIndex && isAnswerCorrect"
-    [class.incorrect-answer]="i === selectedAnswerIndex && !isAnswerCorrect">
+    [class.incorrect-answer]="i === selectedAnswerIndex && !isAnswerCorrect"
+    [class.non-interactive]="selectedAnswerIndex > -1"
+    [class.actual-correct-answer]="selectedAnswerIndex > -1 &&
+      !isAnswerCorrect &&
+      i === correctAnswerIndex">
     {{option}}
   </button>
 

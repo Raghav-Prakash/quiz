@@ -10,14 +10,19 @@ export class QuestionComponent implements OnInit {
 
   @Input() question: Question;
   options: string[];
-  selectedAnswerIndex: number;
+  selectedAnswerIndex = -1;
   isAnswerCorrect: boolean;
+  correctAnswerIndex = -1;
 
   constructor() { }
 
   ngOnInit() {
     this.question.question = this.decodeText(this.question.question);
     this.options = this.getOptions(this.question.incorrectAnswers, this.question.correctAnswer);
+    this.correctAnswerIndex = this.getCorrectAnswerIndex(
+      this.options,
+      this.decodeText(this.question.correctAnswer)
+    );
   }
 
   onSelectOption(option: string) {
@@ -47,6 +52,10 @@ export class QuestionComponent implements OnInit {
     options.splice(index, 0, correctOption);
 
     return options;
+  }
+
+  private getCorrectAnswerIndex(options: string[], correctAnswer: string): number {
+    return options.findIndex(option => option === correctAnswer);
   }
 
 }

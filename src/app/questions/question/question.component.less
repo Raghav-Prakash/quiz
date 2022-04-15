@@ -17,19 +17,21 @@
 
     .option {
       min-width: 20rem;
+      max-width: 20rem;
 
       button {
         width: 100%;
         background-color: @bodyBackgroundColor;
         font-size: 1.2rem;
         color: @cardBackgroundColor;
+        white-space: pre-line;
 
         &:hover {
           background-color: darken(@bodyBackgroundColor, 20%);
           color: white;
         }
 
-        &.correct-answer {
+        &.correct-answer, &.actual-correct-answer {
           background-color: @correctAnswerBackgroundColor;
           color: white;
         }
@@ -37,6 +39,10 @@
         &.incorrect-answer {
           background-color: @incorrectAnswerBackgroundColor;
           color: white;
+        }
+
+        &.non-interactive {
+          pointer-events: none;
         }
       }
     }
