@@ -1,0 +1,21 @@
+@import "src/styles.less";
+
+.finish-quiz {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  margin: 0 auto;
+  position: relative;
+  top: 1.2em;
+  padding-bottom: 2em;
+
+  button {
+    font-size: 1.2rem;
+    background-color: @finishButtonBackgroundColor;
+    width: 50%;
+
+    &:hover {
+      background-color: darken(@finishButtonBackgroundColor, 10%);
+    }
+  }
+}
