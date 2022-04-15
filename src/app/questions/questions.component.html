@@ -4,10 +4,8 @@
     <question [question]="question"></question>
   </ng-container>
 
-</ng-container>
+  <div class="finish-quiz" *ngIf="(attemptCountStore.attemptCount$ | async) === questions.length">
+    <button mat-raised-button class="finish">FINISH</button>
+  </div>
 
-<div class="finish-quiz">
-  <button mat-raised-button color="accent">
-    FINISH
-  </button>
-</div>
+</ng-container>

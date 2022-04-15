@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { QuestionsStore } from 'src/app/store/questions.store';
+import { AttemptCountStore } from 'src/app/store/attempt-count.store';
 
 @Component({
   selector: 'questions',
@@ -10,7 +11,8 @@ import { QuestionsStore } from 'src/app/store/questions.store';
 export class QuestionsComponent implements OnInit {
 
   constructor(
-    public questionsStore: QuestionsStore
+    public questionsStore: QuestionsStore,
+    public attemptCountStore: AttemptCountStore
   ) { }
 
   ngOnInit() {

@@ -3,6 +3,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Question } from 'src/app/models/question';
 import { ScoreStore } from 'src/app/store/score.store';
 import { ScoreActions } from 'src/app/store/actions/score.actions';
+import { AttemptCountStore } from 'src/app/store/attempt-count.store';
+import { AttemptCountActions } from 'src/app/store/actions/attempt-count.actions';
 @Component({
   selector: 'question',
   templateUrl: './question.component.html',
@@ -17,7 +19,8 @@ export class QuestionComponent implements OnInit {
   correctAnswerIndex = -1;
 
   constructor(
-    private scoreStore: ScoreStore
+    private scoreStore: ScoreStore,
+    private attemptCountStore: AttemptCountStore
   ) { }
 
   ngOnInit() {
@@ -33,6 +36,7 @@ export class QuestionComponent implements OnInit {
     this.selectedAnswerIndex = this.options.findIndex(opt => opt === option);
     this.isAnswerCorrect = this.question.correctAnswer === option;
     this.scoreStore.dispatch(this.isAnswerCorrect ? ScoreActions.INCREMENT_SCORE : ScoreActions.NOOP);
+    this.attemptCountStore.dispatch(AttemptCountActions.INCREMENT_ATTEMPT);
   }
 
   private decodeText(text: string): string {
