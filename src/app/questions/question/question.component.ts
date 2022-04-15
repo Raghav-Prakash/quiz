@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { Question } from 'src/app/models/question';
+import { ScoreStore } from 'src/app/store/score.store';
+import { ScoreActions } from 'src/app/store/actions/score.actions';
 @Component({
   selector: 'question',
   templateUrl: './question.component.html',
@@ -14,7 +16,9 @@ export class QuestionComponent implements OnInit {
   isAnswerCorrect: boolean;
   correctAnswerIndex = -1;
 
-  constructor() { }
+  constructor(
+    private scoreStore: ScoreStore
+  ) { }
 
   ngOnInit() {
     this.question.question = this.decodeText(this.question.question);
@@ -28,6 +32,7 @@ export class QuestionComponent implements OnInit {
   onSelectOption(option: string) {
     this.selectedAnswerIndex = this.options.findIndex(opt => opt === option);
     this.isAnswerCorrect = this.question.correctAnswer === option;
+    this.scoreStore.dispatch(this.isAnswerCorrect ? ScoreActions.INCREMENT_SCORE : ScoreActions.NOOP);
   }
 
   private decodeText(text: string): string {
