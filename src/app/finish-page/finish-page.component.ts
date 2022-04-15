@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LocationStrategy } from '@angular/common';
 
 @Component({
   selector: 'finish-page',
@@ -7,6 +8,21 @@ import { Component } from '@angular/core';
 })
 export class FinishPageComponent {
 
-  constructor() { }
+  constructor(
+    private location: LocationStrategy
+  ) {
+    this.preventBackButton();
+  }
+
+  /**
+   * Prevent back button functionality in the browser.
+   */
+  private preventBackButton() {
+    history.pushState(null, null, window.location.href);
+
+    this.location.onPopState(() => {
+      history.pushState(null, null, window.location.href);
+    });
+  }
 
 }
