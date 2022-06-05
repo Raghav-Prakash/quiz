@@ -34,7 +34,7 @@ export class QuestionComponent implements OnInit {
 
   onSelectOption(option: string) {
     this.selectedAnswerIndex = this.options.findIndex(opt => opt === option);
-    this.isAnswerCorrect = this.question.correctAnswer === option;
+    this.isAnswerCorrect = this.decodeText(this.question.correctAnswer) === option;
     this.scoreStore.dispatch(this.isAnswerCorrect ? ScoreActions.INCREMENT_SCORE : ScoreActions.NOOP);
     this.attemptCountStore.dispatch(AttemptCountActions.INCREMENT_ATTEMPT);
   }

@@ -1,3 +1,4 @@
 <div class="title">
-  <h1>You got _ answers correct out of _ questions.</h1>
+  <h1>You got {{ scoreStore.score$ | async }} answers correct out of {{ (questionsStore.questions$ | async).length }} questions.</h1>
+  <button mat-raised-button class="home" [routerLink]="['']">Try Another Quiz</button>
 </div>

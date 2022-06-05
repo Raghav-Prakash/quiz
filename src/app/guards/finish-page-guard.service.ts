@@ -29,6 +29,6 @@ export class FinishPageGuardService implements CanActivate {
         }
         return of(questions.length > 0 && questions.length === attemptCount);
       })
-    )
+    );
   }
 }
